@@ -41,11 +41,13 @@ public class SymbolController : MonoBehaviour
 
     public void Spin()
     {
+        isSpinning = true;
         StartCoroutine(ISpawnSymbols());
     }
 
     public void Stop()
     {
+        isSpinning = false;
         StopCoroutine(ISpawnSymbols());
         count = 0f;
     }

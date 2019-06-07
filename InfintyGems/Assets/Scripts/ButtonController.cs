@@ -28,17 +28,21 @@ public class ButtonController : MonoBehaviour
     }
     public void PlayButtonClicked()
     {
-        FindObjectOfType<GameManager>().Spin();
+        FindObjectOfType<SymbolController>().Spin();
         playButton.gameObject.SetActive(false);
         stopButton.gameObject.SetActive(true);
     }
 
     public void StopButtonClicked()
     {
-        FindObjectOfType<GameManager>().Stop();
+        FindObjectOfType<SymbolController>().Stop();
         stopButton.gameObject.SetActive(false);
         playButton.gameObject.SetActive(true);
+    }
 
+    public void DenominationButtonClicked()
+    {
+        FindObjectOfType<CoinDenomController>().ChangeDenomination();
     }
 
 }

@@ -48,16 +48,4 @@ public class GameManager : MonoBehaviour
         sceneTexts[textIndex].text = credits.ToString();
         print(credits);
     }
-
-    public void Spin()
-    {
-        FindObjectOfType<SymbolController>().IsSpinning = true;
-        FindObjectOfType<SymbolController>().Spin();
-    }
-
-    public void Stop()
-    {
-        FindObjectOfType<SymbolController>().IsSpinning = false;
-        FindObjectOfType<SymbolController>().Stop();
-    }
 }
