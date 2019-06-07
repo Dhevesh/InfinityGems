@@ -8,12 +8,14 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField]
     private GameObject coinFountainSpawner;
+    [SerializeField]
+    private Text playerBalance;
+
+    public float credits = 0;
 
     void Start()
     {
-        
-        StartCoroutine("IUpdateBalance");
-        
+        InsertCredits();
     }
 
     // Update is called once per frame
@@ -27,25 +29,18 @@ public class GameManager : MonoBehaviour
         {
             FindObjectOfType<CoinFountainController>().DisableCoinFountain();
         }
+
+        if (credits == 0)
+            FindObjectOfType<ButtonController>().playButton.interactable = false;
+        else
+            FindObjectOfType<ButtonController>().playButton.interactable = true;
     }
 
-    private IEnumerator IUpdateBalance()
+    private void InsertCredits()
     {
-        yield return new WaitForSeconds(4f);
-        float credits = 10000;
-        Text[] sceneTexts = FindObjectsOfType<Text>();
-        int textIndex = 0;
-        int counter = 0;
-        
-        foreach(Text text in sceneTexts)
-        {
-            if (text.name == "PlayerPanelText")
-                textIndex = counter;
-
-            counter++;  
-        }
-
-        sceneTexts[textIndex].text = credits.ToString();
-        print(credits);
+        //credits = 1000;
+        playerBalance.text = credits.ToString();
+        FindObjectOfType<ButtonController>().playButton.interactable = true;
     }
+
 }

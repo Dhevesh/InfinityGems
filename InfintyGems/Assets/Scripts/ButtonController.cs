@@ -6,19 +6,41 @@ public class ButtonController : MonoBehaviour
 {
     private Button[] buttons;
     [HideInInspector]
-    public Button playButton;
-    [HideInInspector]
-    public Button stopButton;
-
+    public Button playButton, stopButton,autoPlayButton,coinDenomButton,helpButton,multiGameButton,increaseCreditsButton,decreaseCreditsButton;
+   
     void Awake()
     {
         buttons = FindObjectsOfType<Button>();
         foreach(Button b in buttons)
         {
-            if (b.name == "PlayButton")
-                playButton = b;
-            else if (b.name == "StopButton")
-                stopButton = b;
+            switch (b.name)
+            {
+                case "PlayButton":
+                    playButton = b;
+                    break;
+                case "StopButton":
+                    stopButton = b;
+                    break;
+                case "AutoPlayButton":
+                    autoPlayButton = b;
+                    break;
+                case "CoinDenomButton":
+                    coinDenomButton = b;
+                    break;
+                case "HelpButton":
+                    helpButton = b;
+                    break;
+                case "MultiGameButton":
+                    multiGameButton = b;
+                    break;
+                case "IncreaseCreditsButton": //TODO
+                    increaseCreditsButton = b;
+                    break;
+                case "DecreaseCreditsButton": //TODO
+                    decreaseCreditsButton = b;
+                    break;
+
+            }
         }
     }
 
@@ -43,6 +65,14 @@ public class ButtonController : MonoBehaviour
     public void DenominationButtonClicked()
     {
         FindObjectOfType<BetController>().ChangeDenomination();
+    }
+
+    public void DisableButtons()
+    {
+        multiGameButton.interactable = false;
+        helpButton.interactable = false;
+        coinDenomButton.interactable = false;
+        autoPlayButton.interactable = false;
     }
 
 }
