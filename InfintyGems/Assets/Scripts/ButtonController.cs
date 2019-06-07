@@ -5,8 +5,10 @@ using UnityEngine.UI;
 public class ButtonController : MonoBehaviour
 {
     private Button[] buttons;
-    private Button playButton;
-    private Button stopButton;
+    [HideInInspector]
+    public Button playButton;
+    [HideInInspector]
+    public Button stopButton;
 
     void Awake()
     {

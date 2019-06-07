@@ -12,6 +12,8 @@ public class SymbolController : MonoBehaviour
     [HideInInspector]
     public GameObject[] symbolObject;
 
+    float count = 0f;
+
 
     public bool IsSpinning
     {
@@ -26,6 +28,17 @@ public class SymbolController : MonoBehaviour
 
     }
 
+    void Update()
+    {
+        if (count >= 20f)
+        {
+            isSpinning = false;
+            FindObjectOfType<ButtonController>().stopButton.gameObject.SetActive(false);
+            FindObjectOfType<ButtonController>().playButton.gameObject.SetActive(true);
+            count = 0f;
+        }
+    }
+
     public void Spin()
     {
         StartCoroutine(ISpawnSymbols());
@@ -34,14 +47,15 @@ public class SymbolController : MonoBehaviour
     public void Stop()
     {
         StopCoroutine(ISpawnSymbols());
+        count = 0f;
     }
     public IEnumerator ISpawnSymbols()
     {
         while (isSpinning)
         {
             yield return new WaitForSeconds(0.08f);
- 
             GetSymbols();
+            count++;
         }
     }
 
