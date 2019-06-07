@@ -42,7 +42,7 @@ public class ButtonController : MonoBehaviour
 
     public void DenominationButtonClicked()
     {
-        FindObjectOfType<CoinDenomController>().ChangeDenomination();
+        FindObjectOfType<BetController>().ChangeDenomination();
     }
 
 }

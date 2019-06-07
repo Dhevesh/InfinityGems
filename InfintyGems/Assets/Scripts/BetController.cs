@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BetController
+public class BetController:MonoBehaviour
 {
 
     [SerializeField]
@@ -36,13 +36,11 @@ public class BetController
         string symbol;
         if (index >= 6)
         {
-            symbol = "$";
             coinDenomButtonText.text = $"${denoms[index].ToString()}";
         }
         else
-        {
-            symbol = "c";
-            coinDenomButtonText.text = $"{denoms[index].ToString()}c";
+        {             
+            coinDenomButtonText.text = $"{denoms[index].ToString()}¢";
         }
         index++;
         if (index >= denomListSize)
