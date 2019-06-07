@@ -64,7 +64,17 @@ public class ButtonController : MonoBehaviour
 
     public void DenominationButtonClicked()
     {
-        FindObjectOfType<BetController>().ChangeDenomination();
+        FindObjectOfType<CoinDenomController>().ChangeDenomination();
+    }
+
+    public void IncreaseBetButtonClicked()
+    {
+        FindObjectOfType<BetController>().IncreaseBet();
+    }
+
+    public void DecreaseBetButtonClicked()
+    {
+        FindObjectOfType<BetController>().DecreaseBet();
     }
 
     public void DisableButtons()

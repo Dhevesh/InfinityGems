@@ -7,44 +7,57 @@ public class BetController:MonoBehaviour
 {
 
     [SerializeField]
-    private Text coinDenomButtonText;
+    private Text betText;
+    [SerializeField]
+    private int betStep = 0;
+    [SerializeField]
+    private int maxBet = 250;
 
-    private int index = 1;
-    int denomListSize;
-    private List<int> denoms = new List<int>();
+    
+    private int betIndex = 0;
+    private int betListSize;
+    private List<int> betList = new List<int>();
 
 
 
     void Awake()
     {
-        denoms.Add(1);
-        denoms.Add(2);
-        denoms.Add(5);
-        denoms.Add(10);
-        denoms.Add(25);
-        denoms.Add(50);
-        denoms.Add(100);
-        denoms.Add(200);
-        denoms.Add(500);
-        denoms.Add(1000);
-
-        denomListSize = denoms.Count;
+        FillBet();
+        betListSize = betList.Count;
     }
 
-    public void ChangeDenomination()
+    void Start()
     {
-        string symbol;
-        if (index >= 6)
-        {
-            coinDenomButtonText.text = $"${denoms[index].ToString()}";
-        }
+        betText.text = betList[0].ToString();
+    }
+    public void IncreaseBet()
+    {
+        
+        if (betIndex >= (betListSize-1))
+            betIndex = 0;
         else
-        {             
-            coinDenomButtonText.text = $"{denoms[index].ToString()}¢";
+            betIndex++;
+        betText.text = betList[betIndex].ToString();
+    }
+
+    public void DecreaseBet()
+    {
+        
+        if (betIndex == 0)
+            betIndex = (betListSize - 1);
+        else
+            betIndex--;
+        betText.text = betList[betIndex].ToString();
+
+    }
+
+    private void FillBet()
+    {
+        for (int i = betStep; i <= maxBet; i += betStep)
+        {
+            betList.Add(i);
         }
-        index++;
-        if (index >= denomListSize)
-            index = 0;
+        
     }
 
 }
