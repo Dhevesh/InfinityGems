@@ -25,12 +25,10 @@ public class GameManager : MonoBehaviour
             FindObjectOfType<CoinFountainController>().DisableCoinFountain();
         }
 
-        if (PlayerCredits == 0)
+        if (!CanSpin())
         {
             FindObjectOfType<ButtonController>().playButton.interactable = false;
         }
-        else if (Convert.ToInt32(FindObjectOfType<BetController>().betText.text) > (PlayerCredits / denomValue))
-            FindObjectOfType<ButtonController>().playButton.interactable = false;
         else
             FindObjectOfType<ButtonController>().playButton.interactable = true;
     }
@@ -64,5 +62,12 @@ public class GameManager : MonoBehaviour
             playerBalance.text = Convert.ToString(PlayerCredits / denomValue);
         }
 
+    }
+
+    public bool CanSpin()
+    {
+        if (!FindObjectOfType<PaytableController>().isPaytableActive && PlayerCredits != 0 && (PlayerCredits/denomValue) >= (Convert.ToInt32(FindObjectOfType<BetController>().betText.text)))
+            return true;
+        return false;
     }
 }

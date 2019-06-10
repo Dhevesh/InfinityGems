@@ -6,11 +6,26 @@ public class PaytableController : MonoBehaviour
 {
     public GameObject paytable;
 
-    bool isActive = false;
+    public bool isPaytableActive = false;
 
     public void TogglePaytable()
     {
-        isActive = !isActive;
-        paytable.SetActive(isActive);
+        isPaytableActive = !isPaytableActive;
+        paytable.SetActive(isPaytableActive);
+
+        if (isPaytableActive == true)
+        {
+            FindObjectOfType<ButtonController>().multiGameButton.interactable = false;
+            FindObjectOfType<ButtonController>().playButton.interactable = false;
+            FindObjectOfType<ButtonController>().autoPlayButton.interactable = false;
+        }
+        else
+        {
+            FindObjectOfType<ButtonController>().multiGameButton.interactable = true;
+            if (FindObjectOfType<GameManager>().CanSpin())
+                FindObjectOfType<ButtonController>().playButton.interactable = true;
+            FindObjectOfType<ButtonController>().autoPlayButton.interactable = true;
+        }
+        
     }
 }
