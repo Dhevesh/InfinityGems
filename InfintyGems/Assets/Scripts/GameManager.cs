@@ -1,25 +1,19 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
     [SerializeField]
     private GameObject coinFountainSpawner;
     [SerializeField]
     private Text playerBalance;
 
-    public float credits = 0;
 
-    void Start()
-    {
-        InsertCredits();
-    }
-
-    // Update is called once per frame
-    void Update()
+    public int PlayerCredits { get; set; }
+    void FixedUpdate()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -30,17 +24,47 @@ public class GameManager : MonoBehaviour
             FindObjectOfType<CoinFountainController>().DisableCoinFountain();
         }
 
-        if (credits == 0)
+        if (playerBalance.text == "0")
+        {
+            FindObjectOfType<ButtonController>().playButton.interactable = false;
+        }
+        else
+            FindObjectOfType<ButtonController>().playButton.interactable = true;
+
+        if (Convert.ToInt32(FindObjectOfType<BetController>().betText.text) > Convert.ToInt32(playerBalance.text))
             FindObjectOfType<ButtonController>().playButton.interactable = false;
         else
             FindObjectOfType<ButtonController>().playButton.interactable = true;
     }
 
-    private void InsertCredits()
+    public void GamePlay()
     {
-        //credits = 1000;
-        playerBalance.text = credits.ToString();
-        FindObjectOfType<ButtonController>().playButton.interactable = true;
+        if (playerBalance.text != "0")
+        {
+            int betAmount = Convert.ToInt32(FindObjectOfType<BetController>().betText.text);
+            PlayerCredits -= betAmount;
+            playerBalance.text = PlayerCredits.ToString();
+        }
     }
 
+    public void ChangeDenom()
+    {
+        string denomText = FindObjectOfType<CoinDenomController>().coinDenomButtonText.text;
+        if (denomText.Contains("$"))
+        {
+            denomText = denomText.Replace("$", "");
+        }
+        else if (denomText.Contains("¢"))
+        {
+            denomText = denomText.Replace("¢", "");
+        }
+        int denomValue = Convert.ToInt32(denomText);
+
+
+        if (PlayerCredits != 0)
+        {
+            playerBalance.text = Convert.ToString(PlayerCredits / denomValue);
+        }
+
+    }
 }

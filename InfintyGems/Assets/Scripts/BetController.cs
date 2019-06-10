@@ -6,10 +6,10 @@ using UnityEngine.UI;
 public class BetController:MonoBehaviour
 {
 
-    [SerializeField]
-    private Text betText;
-    [SerializeField]
-    private int betStep = 0;
+    
+    public Text betText;
+    
+    public int betStep = 0;
     [SerializeField]
     private int maxBet = 250;
 

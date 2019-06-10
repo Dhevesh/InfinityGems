@@ -39,7 +39,6 @@ public class ButtonController : MonoBehaviour
                 case "DecreaseCreditsButton": //TODO
                     decreaseCreditsButton = b;
                     break;
-
             }
         }
     }
@@ -51,6 +50,7 @@ public class ButtonController : MonoBehaviour
     public void PlayButtonClicked()
     {
         FindObjectOfType<SymbolController>().Spin();
+        FindObjectOfType<GameManager>().GamePlay();
         playButton.gameObject.SetActive(false);
         stopButton.gameObject.SetActive(true);
     }
@@ -65,6 +65,7 @@ public class ButtonController : MonoBehaviour
     public void DenominationButtonClicked()
     {
         FindObjectOfType<CoinDenomController>().ChangeDenomination();
+        FindObjectOfType<GameManager>().ChangeDenom();
     }
 
     public void IncreaseBetButtonClicked()
@@ -75,6 +76,11 @@ public class ButtonController : MonoBehaviour
     public void DecreaseBetButtonClicked()
     {
         FindObjectOfType<BetController>().DecreaseBet();
+    }
+
+    public void MenuButtonClicked()
+    {
+        FindObjectOfType<DemoPanelController>().ToggleDemoPanel();
     }
 
     public void DisableButtons()

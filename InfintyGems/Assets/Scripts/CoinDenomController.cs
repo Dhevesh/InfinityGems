@@ -5,17 +5,17 @@ using UnityEngine.UI;
 
 public class CoinDenomController : MonoBehaviour
 {
-    [SerializeField]
-    private Text coinDenomButtonText;
+    public Text coinDenomButtonText;
 
 
     private int denomIndex = 1;
     private int denomListSize;
     private List<int> denomList = new List<int>();
+
+    private int denomValue;
+
+    public int DenomValue { get => denomValue; }
     
-
-
-
     void Awake()
     {
         denomList.Add(1);
@@ -29,6 +29,7 @@ public class CoinDenomController : MonoBehaviour
         denomList.Add(500);
         denomList.Add(1000);
         denomListSize = denomList.Count;
+        denomValue = denomList[0];
     }
 
     public void ChangeDenomination()
@@ -40,9 +41,12 @@ public class CoinDenomController : MonoBehaviour
         else
         {
             coinDenomButtonText.text = $"{denomList[denomIndex].ToString()}¢";
+            
         }
+        denomValue = denomList[denomIndex];
         denomIndex++;
         if (denomIndex >= denomListSize)
             denomIndex = 0;
+        
     }
 }
