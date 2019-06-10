@@ -21,7 +21,5 @@ public class InfoBarController : MonoBehaviour
         {
             infoBarText.text = "";
         }
-
-
     }
 }

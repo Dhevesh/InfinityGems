@@ -19,7 +19,6 @@ public class DemoPanelController : MonoBehaviour
         int dropDownToCreditsInt = Convert.ToInt32(dropDownToCredits);
         FindObjectOfType<GameManager>().PlayerCredits += dropDownToCreditsInt;
         playerCreditsText.text = Convert.ToString(FindObjectOfType<GameManager>().PlayerCredits / FindObjectOfType<CoinDenomController>().DenomValue);
-        
     }
 
 

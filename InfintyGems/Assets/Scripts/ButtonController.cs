@@ -33,10 +33,10 @@ public class ButtonController : MonoBehaviour
                 case "MultiGameButton":
                     multiGameButton = b;
                     break;
-                case "IncreaseCreditsButton": //TODO
+                case "IncreaseCreditsButton":
                     increaseCreditsButton = b;
                     break;
-                case "DecreaseCreditsButton": //TODO
+                case "DecreaseCreditsButton":
                     decreaseCreditsButton = b;
                     break;
             }
@@ -81,6 +81,11 @@ public class ButtonController : MonoBehaviour
     public void MenuButtonClicked()
     {
         FindObjectOfType<DemoPanelController>().ToggleDemoPanel();
+    }
+
+    public void HelpButtonClicked()
+    {
+        FindObjectOfType<PaytableController>().TogglePaytable();
     }
 
     public void DisableButtons()
