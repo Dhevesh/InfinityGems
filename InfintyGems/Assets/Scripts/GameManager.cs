@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     private GameObject coinFountainSpawner;
     [SerializeField]
     private Text playerBalance;
+    int denomValue = 1; //default value
 
 
     public int PlayerCredits { get; set; }
@@ -24,14 +25,11 @@ public class GameManager : MonoBehaviour
             FindObjectOfType<CoinFountainController>().DisableCoinFountain();
         }
 
-        if (playerBalance.text == "0")
+        if (PlayerCredits == 0)
         {
             FindObjectOfType<ButtonController>().playButton.interactable = false;
         }
-        else
-            FindObjectOfType<ButtonController>().playButton.interactable = true;
-
-        if (Convert.ToInt32(FindObjectOfType<BetController>().betText.text) > Convert.ToInt32(playerBalance.text))
+        else if (Convert.ToInt32(FindObjectOfType<BetController>().betText.text) > (PlayerCredits / denomValue))
             FindObjectOfType<ButtonController>().playButton.interactable = false;
         else
             FindObjectOfType<ButtonController>().playButton.interactable = true;
@@ -58,7 +56,7 @@ public class GameManager : MonoBehaviour
         {
             denomText = denomText.Replace("¢", "");
         }
-        int denomValue = Convert.ToInt32(denomText);
+        denomValue = Convert.ToInt32(denomText);
 
 
         if (PlayerCredits != 0)

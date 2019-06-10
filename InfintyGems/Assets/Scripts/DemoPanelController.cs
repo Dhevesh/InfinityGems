@@ -27,6 +27,12 @@ public class DemoPanelController : MonoBehaviour
         InsertCredits();
     }
 
+    public void CashoutButton_Click()
+    {
+        FindObjectOfType<GameManager>().PlayerCredits = 0;
+        playerCreditsText.text = FindObjectOfType<GameManager>().PlayerCredits.ToString();
+    }
+
     public void ToggleDemoPanel()
     {
         if (!isActive)
