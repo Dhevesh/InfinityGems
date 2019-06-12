@@ -88,6 +88,11 @@ public class ButtonController : MonoBehaviour
         FindObjectOfType<PaytableController>().TogglePaytable();
     }
 
+    public void Test_Click()
+    {
+        FindObjectOfType<WinController>().TestData();
+    }
+
     public void DisableButtons()
     {
         multiGameButton.interactable = false;

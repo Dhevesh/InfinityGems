@@ -15,11 +15,6 @@ public class CoinFountainController : MonoBehaviour
 
     private bool isActive;
 
-    void Start()
-    {
-        //StartCoroutine(ISpawnCoin());
-    }
-
     public void EnableCoinFountain() {
         isActive = true;
         StartCoroutine(ISpawnCoin());

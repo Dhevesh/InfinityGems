@@ -59,6 +59,8 @@ public class SymbolController : MonoBehaviour
             GetSymbols();
             count++;
         }
+        FindObjectOfType<WinController>().TestData();
+        FindObjectOfType<WinController>().GameWon();
     }
 
     private void GetSymbols()
@@ -68,6 +70,8 @@ public class SymbolController : MonoBehaviour
             randomIndex = Random.Range(0, symbols.Length);
             o.GetComponent<SpriteRenderer>().sprite = symbols[randomIndex];
         }
+
+        //symbolObject[12].GetComponent<SpriteRenderer>().sprite = symbols[1]; FOR TESTING
     }
 
 }

@@ -63,7 +63,6 @@ public class GameManager : MonoBehaviour
         }
 
     }
-
     public bool CanSpin()
     {
         if (!FindObjectOfType<PaytableController>().isPaytableActive && PlayerCredits != 0 && (PlayerCredits/denomValue) >= (Convert.ToInt32(FindObjectOfType<BetController>().betText.text)))
