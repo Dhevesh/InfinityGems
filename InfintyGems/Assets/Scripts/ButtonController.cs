@@ -6,7 +6,7 @@ public class ButtonController : MonoBehaviour
 {
     private Button[] buttons;
     [HideInInspector]
-    public Button playButton, stopButton,autoPlayButton,coinDenomButton,helpButton,multiGameButton,increaseCreditsButton,decreaseCreditsButton;
+    public Button playButton, stopButton,autoPlayButton,coinDenomButton,helpButton,multiGameButton,increaseBetButton,decreaseBetButton;
    
     void Awake()
     {
@@ -33,13 +33,24 @@ public class ButtonController : MonoBehaviour
                 case "MultiGameButton":
                     multiGameButton = b;
                     break;
-                case "IncreaseCreditsButton":
-                    increaseCreditsButton = b;
+                case "IncreaseBetButton":
+                    increaseBetButton = b;
                     break;
-                case "DecreaseCreditsButton":
-                    decreaseCreditsButton = b;
+                case "DecreaseBetButton":
+                    decreaseBetButton = b;
                     break;
             }
+        }
+    }
+    void Update()
+    {
+        if (FindObjectOfType<SymbolController>().IsSpinning)
+        {
+            DisableButtons();
+        }
+        else
+        {
+            EnableButtons();
         }
     }
 
@@ -99,8 +110,20 @@ public class ButtonController : MonoBehaviour
         helpButton.interactable = false;
         coinDenomButton.interactable = false;
         autoPlayButton.interactable = false;
-        increaseCreditsButton.interactable = false;
-        increaseCreditsButton.interactable = true;
+        increaseBetButton.interactable = false;
+        increaseBetButton.interactable = false;
+        FindObjectOfType<DemoPanelController>().demoPanel.SetActive(false);
+        FindObjectOfType<DemoPanelController>().isActive = false;
+    }
+
+    public void EnableButtons()
+    {
+        multiGameButton.interactable = true;
+        helpButton.interactable = true;
+        coinDenomButton.interactable = true;
+        autoPlayButton.interactable = true;
+        increaseBetButton.interactable = true;
+        increaseBetButton.interactable = true;
     }
 
 }

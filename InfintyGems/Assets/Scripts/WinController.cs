@@ -14,16 +14,8 @@ public class WinController : MonoBehaviour
     {
         reelSymbols = FindObjectOfType<SymbolController>().symbolObject;
         symbols = FindObjectOfType<SymbolController>().symbols;
-        foreach ( GameObject g in reelSymbols)
-        {
-            Debug.LogError(g);
-        }
-
-        foreach (Sprite s in symbols)
-        {
-            Debug.LogError(s);
-        }
         GetSpriteRenderer();
+
     }
 
     public void GameWon()
