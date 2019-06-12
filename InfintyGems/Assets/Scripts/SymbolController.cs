@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SymbolController : MonoBehaviour
 {
@@ -59,8 +60,14 @@ public class SymbolController : MonoBehaviour
             GetSymbols();
             count++;
         }
+        //This needs to move into the GameManager
         FindObjectOfType<WinController>().TestData();
         FindObjectOfType<WinController>().GameWon();
+        foreach (string s in FindObjectOfType<WinController>().infoBarMessages)
+        {
+            FindObjectOfType<InfoBarController>().infoBarText.text = s;
+            yield return new WaitForSecondsRealtime(3f);
+        }
     }
 
     private void GetSymbols()
