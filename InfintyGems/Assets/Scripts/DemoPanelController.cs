@@ -9,7 +9,7 @@ public class DemoPanelController : MonoBehaviour
     public Dropdown creditsAmountDropDown;
     public Text playerCreditsText;
     public GameObject demoPanel;
-    private bool isActive;
+    private bool isActive = false; //default value
 
     void InsertCredits()
     {
@@ -35,15 +35,7 @@ public class DemoPanelController : MonoBehaviour
 
     public void ToggleDemoPanel()
     {
-        if (!isActive)
-        {
-            demoPanel.SetActive(true);
-            isActive = true;
-        }
-        else
-        {
-            demoPanel.SetActive(false);
-            isActive = false;
-        }
+        isActive = !isActive;
+        demoPanel.SetActive(isActive);
     }
 }

@@ -13,7 +13,7 @@ public class PaytableController : MonoBehaviour
         isPaytableActive = !isPaytableActive;
         paytable.SetActive(isPaytableActive);
 
-        if (isPaytableActive == true)
+        if (isPaytableActive)
         {
             FindObjectOfType<ButtonController>().multiGameButton.interactable = false;
             FindObjectOfType<ButtonController>().playButton.interactable = false;
