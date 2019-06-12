@@ -99,6 +99,8 @@ public class ButtonController : MonoBehaviour
         helpButton.interactable = false;
         coinDenomButton.interactable = false;
         autoPlayButton.interactable = false;
+        increaseCreditsButton.interactable = false;
+        increaseCreditsButton.interactable = true;
     }
 
 }

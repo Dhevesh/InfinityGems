@@ -4,13 +4,6 @@ using UnityEngine;
 
 public class WinController : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject[] row1;
-    [SerializeField]
-    private GameObject[] row2;
-    [SerializeField]
-    private GameObject[] row3;
-
     private GameObject[] reelSymbols;
     private Sprite[] symbols;
     private List<SpriteRenderer> sr = new List<SpriteRenderer>();
@@ -21,6 +14,15 @@ public class WinController : MonoBehaviour
     {
         reelSymbols = FindObjectOfType<SymbolController>().symbolObject;
         symbols = FindObjectOfType<SymbolController>().symbols;
+        foreach ( GameObject g in reelSymbols)
+        {
+            Debug.LogError(g);
+        }
+
+        foreach (Sprite s in symbols)
+        {
+            Debug.LogError(s);
+        }
         GetSpriteRenderer();
     }
 

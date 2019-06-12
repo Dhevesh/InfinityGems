@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 public class SymbolController : MonoBehaviour
 {
@@ -24,7 +25,8 @@ public class SymbolController : MonoBehaviour
     void Awake()
     {
         
-        symbolObject = GameObject.FindGameObjectsWithTag("Symbol");
+        symbolObject = GameObject.FindGameObjectsWithTag("Symbol").OrderBy(go=>go.name).ToArray();
+        //FindObjectOfType<WinController>().reelSymbols = symbolObject;
         GetSymbols();
 
     }
