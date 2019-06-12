@@ -38,8 +38,8 @@ public class GameManager : MonoBehaviour
         if (playerBalance.text != "0")
         {
             int betAmount = Convert.ToInt32(FindObjectOfType<BetController>().betText.text);
-            PlayerCredits -= betAmount;
-            playerBalance.text = PlayerCredits.ToString();
+            PlayerCredits -= betAmount * denomValue;
+            playerBalance.text = (PlayerCredits/denomValue).ToString();
         }
     }
 

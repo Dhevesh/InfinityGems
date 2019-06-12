@@ -26,7 +26,6 @@ public class SymbolController : MonoBehaviour
     {
         
         symbolObject = GameObject.FindGameObjectsWithTag("Symbol").OrderBy(go=>go.name).ToArray();
-        //FindObjectOfType<WinController>().reelSymbols = symbolObject;
         GetSymbols();
 
     }
